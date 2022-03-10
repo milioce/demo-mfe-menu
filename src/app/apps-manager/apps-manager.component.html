@@ -1,0 +1,23 @@
+<div class="apps-manager">
+	<div>
+		<h1>Test angular mfe: {{ appId }}</h1>
+		<p>{{ 'appsManager.title' | translate }}</p>
+	</div>
+
+  <mat-drawer-container>
+    <mat-drawer-content class="apps-manager-container">
+      <mat-tab-group #mainTabGroup animationDuration="0ms" mat-align-tabs="center" class="apps-manager-tabs">
+        <mat-tab label="{{ 'app.apps-manager.menu-management' | translate }}">
+          <ng-template matTabContent>
+            gestión de menus
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="{{ 'app.apps-manager.apps-management' | translate }}">
+          <ng-template matTabContent>
+            gestión de apps
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
