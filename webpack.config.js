@@ -35,8 +35,11 @@ module.exports = {
           "@angular/common": { eager: true },
           "@angular/common/http": { eager: true },
           "@angular/router": { eager: true },
-          "@ngx-translate/core": { eager: true },
-          "@ngx-translate/http-loader": { eager: true },
+          // "@argo/common": { eager: true },
+          // "@argo/core": { eager: true },
+          // "@argo/multilanguage": { eager: true },
+          // "@ngx-translate/core": { eager: true },
+          // "@ngx-translate/http-loader": { eager: true },
           "@angular/material": { eager: true },
 
           ...sharedMappings.getDescriptors()

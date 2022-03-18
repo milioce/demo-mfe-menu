@@ -1,0 +1,19 @@
+{
+	"arq": {
+		"security": {
+			"credentials": {
+				"clientId": "a74ddc0e-a2fd-4578-b98b-f4857b7ee2ab"
+			},
+			"oAuthHostname": "https://login.int.sca.corp",
+			"apiHostname": "https://api.des.sca.corp/scainterna/desarrollo/crosschannel",
+			"realm": "ssointadeslas"
+		},
+		"logger": {},
+		"trace": {
+			"url": "https://api.des.sca.corp/scainterna/desarrollo/it/logs"
+		},
+		"monitoring": {
+			"url": "https://api.des.sca.corp/scainterna/desarrollo/it/monitor/metrics"
+		}
+	}
+}

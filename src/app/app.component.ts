@@ -9,7 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'appsManager';
 
-  constructor(private translate: TranslateService) {
+  constructor(translate: TranslateService) {
     translate.use('es');
+    console.log('Service in AppComponent', translate);
   }
+
 }

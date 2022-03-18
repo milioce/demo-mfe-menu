@@ -1,0 +1,11 @@
+{
+	"config": {
+		"appName": "demo-mfe-menu",
+		"env": "dev",
+		"applicationType": "internet",
+		"description": "Application for manage menus",
+		"security": {
+			"appUseBiometricAuth": ""
+		}
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"app": {
+		"appName": "portal-sca-menu-manager",
+		"applicationType": "internet",
+		"description": "Application for manage menus"
+	}
+}

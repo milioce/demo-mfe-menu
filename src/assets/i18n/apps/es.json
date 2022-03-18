@@ -1,5 +1,7 @@
 {
   "appsManager": {
-    "title": "Gestor de aplicaciones"
+    "title": "Apps Manager MFE",
+    "menu-management": "Gestor de menús",
+    "apps-management": "Gestor de apliaciones"
   }
 }

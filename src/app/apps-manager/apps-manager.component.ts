@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AppsManagerService } from './apps-manager.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { AppsManagerService } from './apps-manager.service';
 export class AppsManagerComponent implements OnInit, OnDestroy {
 	@Input() appId!: string;
 
-	constructor(private appsManagerService: AppsManagerService) {}
+	constructor(private appsManagerService: AppsManagerService, private translate: TranslateService) {
+    console.log('Service in AppsManagerComponent', translate);
+  }
 
 	ngOnInit(): void {
 		this.appsManagerService.init(this.appId);

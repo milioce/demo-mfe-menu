@@ -1,0 +1,19 @@
+{
+	"arq": {
+		"security": {
+			"credentials": {
+				"clientId": ""
+			},
+			"oAuthHostname": "",
+			"apiHostname": "",
+			"realm": ""
+		},
+		"logger": {},
+		"trace": {
+			"url": ""
+		},
+		"monitoring": {
+			"url": ""
+		}
+	}
+}
