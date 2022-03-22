@@ -16,16 +16,16 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/core/', '.json');
+  return new TranslateHttpLoader(http, `${environment.domain}/assets/i18n/core/`, '.json');
 }
 
 let modules = [];
 
 if (environment.useArgo) {
   modules = [
-    ARGOCommonModule.forRoot('http://localhost:4302/'),
+    ARGOCommonModule.forRoot(environment.domain),
     ARGOCoreModule.forRoot(true),
-    MultilanguageModule.forRoot('es', ['es', 'en'], './assets/i18n/core/'),
+    MultilanguageModule.forRoot('es', ['es', 'en'], `${environment.domain}/assets/i18n/core/`),
   ];
 } else {
   modules = [

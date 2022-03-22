@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  useArgo: false
+  useArgo: true,
+  domain: '',
 };
 
 /*

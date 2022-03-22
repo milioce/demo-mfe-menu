@@ -1,9 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Injector, ModuleWithProviders, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule, Routes } from '@angular/router';
 
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
+
+import { filter, map, mergeMap, switchMap } from 'rxjs/operators';
 
 import { CoreModule as ARGOCoreModule } from '@argo/core';
 import { CommonModule as ARGOCommonModule, ConfigService } from '@argo/common';
@@ -16,8 +18,11 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
 
+declare var __webpack_public_path__: string;
+environment.domain =  __webpack_public_path__ || '';
+
 export function createChildTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/apps/', '.json');
+  return new TranslateHttpLoader(http, `${environment.domain}/assets/i18n/apps/`, '.json');
 }
 
 const routes: Routes = [{ path: '', component: AppsManagerComponent }];
@@ -25,9 +30,9 @@ let modules = [];
 
 if (environment.useArgo) {
   modules = [
-    ARGOCommonModule.forRoot('http://localhost:4302/'),
+    ARGOCommonModule.forRoot(environment.domain),
     ARGOCoreModule.forRoot(true),
-    MultilanguageModule.forRoot('es', ['es', 'en'], 'http://localhost:4302/assets/i18n/apps/'),
+    MultilanguageModule.forRoot('es', ['es', 'en'], `${environment.domain}/assets/i18n/apps/`),
   ];
 } else {
   modules = [
@@ -69,8 +74,24 @@ export class AppsManagerModule {
       ]
     }
   }
-	constructor(private injector: Injector) {
+	constructor(private injector: Injector, private router: Router, private route: ActivatedRoute) {
+
     this.reloadLanguage();
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => {
+        let route = this.route;
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+        return route;
+      }),
+      filter(route => route.outlet === 'primary'),
+      mergeMap(route => route.data),
+    ).subscribe(data => {
+      console.log('Router data in MFE', data);
+    });
 	}
 
   private reloadLanguage() {
@@ -78,7 +99,7 @@ export class AppsManagerModule {
       const translate = this.injector.get(MultilanguageService);
       if (translate) {
         const currentLang = translate.getCurrentLanguage();
-        translate.reloadLang('./assets/i18n/apps/', currentLang);
+        translate.reloadLang(`${environment.domain}/assets/i18n/apps/`, currentLang);
       }
     } else {
       const translate = this.injector.get(TranslateService);

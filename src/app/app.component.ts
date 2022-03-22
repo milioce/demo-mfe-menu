@@ -11,7 +11,6 @@ export class AppComponent {
 
   constructor(translate: TranslateService) {
     translate.use('es');
-    console.log('Service in AppComponent', translate);
   }
 
 }

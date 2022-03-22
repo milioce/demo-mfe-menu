@@ -12,7 +12,6 @@ export class AppsManagerComponent implements OnInit, OnDestroy {
 	@Input() appId!: string;
 
 	constructor(private appsManagerService: AppsManagerService, private translate: TranslateService) {
-    console.log('Service in AppsManagerComponent', translate);
   }
 
 	ngOnInit(): void {

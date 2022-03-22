@@ -38,8 +38,8 @@ module.exports = {
           // "@argo/common": { eager: true },
           // "@argo/core": { eager: true },
           // "@argo/multilanguage": { eager: true },
-          // "@ngx-translate/core": { eager: true },
-          // "@ngx-translate/http-loader": { eager: true },
+          "@ngx-translate/core": { eager: true },
+          "@ngx-translate/http-loader": { eager: true },
           "@angular/material": { eager: true },
 
           ...sharedMappings.getDescriptors()
